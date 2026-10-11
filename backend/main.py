@@ -17,7 +17,9 @@ load_dotenv()
 SECRET = os.getenv("SECRET_KEY", "change-me-in-production")
 DB_URL = os.getenv("DATABASE_URL", "sqlite:///./planner.db")
 if DB_URL.startswith("postgres://"):
-    DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
+    DB_URL = DB_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+elif DB_URL.startswith("postgresql://"):
+    DB_URL = DB_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
 MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 
