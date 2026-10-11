@@ -32,20 +32,14 @@ The app has a separate frontend and API. Deploy them as a Render Static Site and
 
 ### Prepare the repository
 
-The local database is ignored for future commits. To remove it from Git tracking without deleting your local copy, run:
-
-```powershell
-git rm --cached backend/planner.db
-```
-
-If that database was previously pushed and contains private data, removing it from the latest commit does not remove it from earlier Git history.
+The local database file remains on your computer but is excluded from the deployment branch and its Git history. The existing `main` branch is unchanged.
 
 Commit and push the app changes to GitHub:
 
 ```powershell
-git add .gitignore README.md backend/main.py backend/requirements.txt frontend/src
+git add .
 git commit -m "Prepare study planner for deployment"
-git push origin master
+git push -u origin study-planner-deploy
 ```
 
 ### Deploy the API
