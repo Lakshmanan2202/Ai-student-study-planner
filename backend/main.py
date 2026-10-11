@@ -16,6 +16,8 @@ load_dotenv()
 
 SECRET = os.getenv("SECRET_KEY", "change-me-in-production")
 DB_URL = os.getenv("DATABASE_URL", "sqlite:///./planner.db")
+if DB_URL.startswith("postgres://"):
+    DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
 MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 
@@ -215,9 +217,16 @@ def db_subject_name(x: StudySession) -> str:
 @app.post("/planner/generate")
 def generate(b: PlanIn, user: User = Depends(current_user), db: Session = Depends(get_db)):
     today = date.today()
+    topics = [(t, s) for s in db.query(Subject).filter_by(user_id=user.id) for t in s.topics if not t.done]
+    topics = [(t, s) for t, s in topics if s.exam_date >= today]
+    if not topics:
+        raise HTTPException(
+            400,
+            "Add an unfinished topic to a subject with an upcoming exam before generating a plan.",
+        )
+
     db.query(StudySession).filter(StudySession.user_id == user.id, StudySession.day >= today,
                                   StudySession.completed == False).delete()  # noqa: E712
-    topics = [(t, s) for s in db.query(Subject).filter_by(user_id=user.id) for t in s.topics if not t.done]
     planned = {t.id: 0 for t, _ in topics}
     for offset in range(b.days):
         day, left = today + timedelta(days=offset), int(b.hours_per_day * 60)

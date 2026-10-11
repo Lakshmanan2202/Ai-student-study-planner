@@ -35,28 +35,27 @@ export default function Login({ onDone }) {
               <path d="M19.5 10.5H27V18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-          <span>STUDY<span className="brand-light">/</span>OS</span>
+          <span>Study Planner</span>
         </a>
 
         <div className="auth-copy">
-          <p className="eyebrow"><span className="status-pulse" /> YOUR PERSONAL LEARNING SYSTEM</p>
-          <h1>Make your next<br /><span>breakthrough</span><br />inevitable.</h1>
+          <p className="eyebrow">Your personal study system</p>
+          <h1>Build steadier study habits.</h1>
           <p className="auth-description">
-            One clear plan. Better focus. A little progress, every day.
+            Keep plans, subjects, and progress in one clear workspace without the extra noise.
           </p>
         </div>
 
-        <div className="auth-orbit" aria-hidden="true">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="orbit-core"><span>FOCUS<br />MODE</span></div>
-          <span className="orbit-label orbit-label-top">PLAN / 01</span>
-          <span className="orbit-label orbit-label-bottom">PROGRESS /∞</span>
-          <span className="orbit-dot orbit-dot-one" />
-          <span className="orbit-dot orbit-dot-two" />
+        <div className="auth-summary" aria-label="Study overview">
+          <div>
+            <strong>Clear plans</strong>
+            <span>Daily focus, weekly structure</span>
+          </div>
+          <div>
+            <strong>Real progress</strong>
+            <span>Track what matters</span>
+          </div>
         </div>
-
-        <p className="auth-footer">A calmer way to get exam-ready <span>•</span> Built for momentum</p>
       </section>
 
       <section className="auth-panel-wrap">
@@ -68,7 +67,7 @@ export default function Login({ onDone }) {
                 <path d="M19.5 10.5H27V18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-            <span>STUDY<span className="brand-light">/</span>OS</span>
+            <span>Study Planner</span>
           </div>
           <div className="auth-heading">
             <span className="auth-kicker">YOUR WORKSPACE AWAITS</span>
@@ -112,7 +111,7 @@ export default function Login({ onDone }) {
           </form>
 
           <p className="auth-switch">
-            {mode === "login" ? "New to Study OS?" : "Already have an account?"}
+            {mode === "login" ? "New to Study Planner?" : "Already have an account?"}
             {" "}
             <button type="button" onClick={() => { setMode(mode === "login" ? "register" : "login"); setError(""); }}>
               {mode === "login" ? "Create an account" : "Sign in"}

@@ -2,6 +2,7 @@
 backend/.env
 backend/.venv
 backend/__pycache__/
+backend/planner.db
 *.pyc
 
 # Frontend

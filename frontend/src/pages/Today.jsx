@@ -55,7 +55,7 @@ export default function Today() {
       <section>
         <h2 className="mb-2 font-medium">Sessions for today</h2>
         {today.length === 0 ? (
-          <p className="text-sm text-muted">Nothing planned. Add subjects with topics, then generate a plan.</p>
+          <p className="text-sm text-muted">Nothing planned. Add an unfinished topic to a subject with an upcoming exam, then generate a plan.</p>
         ) : (
           <ul className="panel divide-y divide-line">
             {today.map((s) => (

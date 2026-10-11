@@ -40,7 +40,7 @@ function Brand() {
           <path d="M19.5 10.5H27V18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </span>
-      <span>STUDY<span className="brand-light">/</span>OS</span>
+      <span>Study Planner</span>
     </div>
   );
 }
